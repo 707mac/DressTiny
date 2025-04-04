@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Application</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- SPLASH SCREEN -->
+    <div class="splash-screen" id="splashScreen">
+        <h1>Witaj w aplikacji <span class="logo-text">DressTiny</span> !</h1>
+    </div>
+
+<!-- LOGIN SCREEN -->
+<div class="login-wrapper">
+    <div class="login-container" id="loginContainer">
+        <div class="login-bow">
+            <div class="bow-loop left"></div>
+            <div class="bow-loop right"></div>
+            <div class="bow-center"></div>
+            <div class="bow-ribbon"></div>
+        </div>
+        <h2>Logowanie</h2>
+        <form id="loginForm">
+            <input type="text" id="username" placeholder="Username" required>
+            <input type="password" id="password" placeholder="Password" required>
+            <button type="submit">Zaloguj się</button>
+        </form>
+    </div>
+</div>
+
+    <!-- MAIN SCREEN -->
+    <div class="main-container" id="mainContainer">
+        <!-- Search bar and Heart icon -->
+        <div class="search-bar-container">
+            <input type="text" class="search-bar" id="searchBar" placeholder="Search..." />
+            <div class="search-suggestions" id="searchSuggestions"></div>
+            <div class="favorites-icon" id="favoritesIcon">&#10084;</div>
+        </div>
+        <div class="logo-container">
+            <div class="app-logo">DressTiny</div>
+        </div>
+
+        <!-- Normal view -->
+        <div id="normalView">
+            <!-- Sliding images -->
+            <div class="image-slider">
+                <div class="slider-images" id="sliderImages">
+                    <img src="Clothes 1.jfif" alt="Clothes 1">
+                    <img src="Clothes 2.jfif" alt="Clothes 2">
+                    <img src="Clothes 3.jpg" alt="Clothes 3">
+                </div>
+            </div>
+
+            <!-- Clothing categories -->
+            <div class="categories">
+                <div class="category">Męska Odzież</div>
+                <div class="category">Damska Odzież</div>
+                <div class="category">Dziecięca Odzież</div>
+            </div>
+
+             <!-- Sale section -->
+             <div class="sale-section">
+                <h2>Sale</h2>
+                <div class="sale-products-container">
+                    <div class="sale-products">
+                        <div class="sale-product" data-product-id="10">
+                            <div class="product-favorite" data-product-id="10">&#10084;</div>
+                            <img src="Product 10.jpg" alt="Product 10">
+                            <div class="name">Product 10</div>
+                            <div class="price"><span class="old-price">149 PLN</span> 99 PLN</div>
+                        </div>
+                        <div class="sale-product" data-product-id="11">
+                            <div class="product-favorite" data-product-id="11">&#10084;</div>
+                            <img src="Product 11.jpg" alt="Product 11">
+                            <div class="name">Product 11</div>
+                            <div class="price"><span class="old-price">179 PLN</span> 129 PLN</div>
+                        </div>
+                        <div class="sale-product" data-product-id="12">
+                            <div class="product-favorite" data-product-id="12">&#10084;</div>
+                            <img src="Product 12.jfif" alt="Product 12">
+                            <div class="name">Product 12</div>
+                            <div class="price"><span class="old-price">129 PLN</span> 89 PLN</div>
+                        </div>
+                        <div class="sale-product" data-product-id="13">
+                            <div class="product-favorite" data-product-id="13">&#10084;</div>
+                            <img src="Product 13.jfif" alt="Product 13">
+                            <div class="name">Product 13</div>
+                            <div class="price"><span class="old-price">199 PLN</span> 149 PLN</div>
+                        </div>
+                        <div class="sale-product" data-product-id="14">
+                            <div class="product-favorite" data-product-id="14">&#10084;</div>
+                            <img src="Product 14.jfif" alt="Product 14">
+                            <div class="name">Product 14</div>
+                            <div class="price"><span class="old-price">159 PLN</span> 119 PLN</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Suggested products -->
+            <div class="product-suggestions" id="productSuggestions">
+                <div class="product" data-product-id="1">
+                    <div class="product-favorite" data-product-id="1">&#10084;</div>
+                    <img src="Product 1.jpg" alt="Product 1">
+                    <div class="name">Product 1</div>
+                    <div class="price">99 PLN</div>
+                </div>
+                <div class="product" data-product-id="2">
+                    <div class="product-favorite" data-product-id="2">&#10084;</div>
+                    <img src="Product 2.jpg" alt="Product 2">
+                    <div class="name">Product 2</div>
+                    <div class="price">149 PLN</div>
+                </div>
+                <div class="product" data-product-id="3">
+                    <div class="product-favorite" data-product-id="3">&#10084;</div>
+                    <img src="Product 3.jpg" alt="Product 3">
+                    <div class="name">Product 3</div>
+                    <div class="price">89 PLN</div>
+                </div>
+                <div class="product" data-product-id="4">
+                    <div class="product-favorite" data-product-id="4">&#10084;</div>
+                    <img src="Product 4.jfif" alt="Product 4">
+                    <div class="name">Product 4</div>
+                    <div class="price">129 PLN</div>
+                </div>
+                <div class="product" data-product-id="5">
+                    <div class="product-favorite" data-product-id="5">&#10084;</div>
+                    <img src="Product 5.jpg" alt="Product 5">
+                    <div class="name">Product 5</div>
+                    <div class="price">179 PLN</div>
+                </div>
+                <div class="product" data-product-id="6">
+                    <div class="product-favorite" data-product-id="6">&#10084;</div>
+                    <img src="Product 6.jpg" alt="Product 6">
+                    <div class="name">Product 6</div>
+                    <div class="price">99 PLN</div>
+                </div>
+                <div class="product" data-product-id="7">
+                    <div class="product-favorite" data-product-id="7">&#10084;</div>
+                    <img src="Product 7.jpg" alt="Product 7">
+                    <div class="name">Product 7</div>
+                    <div class="price">139 PLN</div>
+                </div>
+                <div class="product" data-product-id="8">
+                    <div class="product-favorite" data-product-id="8">&#10084;</div>
+                    <img src="Product 8.jpg" alt="Product 8">
+                    <div class="name">Product 8</div>
+                    <div class="price">119 PLN</div>
+                </div>
+                <div class="product" data-product-id="9">
+                    <div class="product-favorite" data-product-id="9">&#10084;</div>
+                    <img src="Product 9.jpg" alt="Product 9">
+                    <div class="name">Product 9</div>
+                    <div class="price">89 PLN</div>
+                </div>
+                <div class="product" data-product-id="15">
+                    <div class="product-favorite" data-product-id="15">&#10084;</div>
+                    <img src="Product 15.jpg" alt="Product 15">
+                    <div class="name">Product 15</div>
+                    <div class="price">149 PLN</div>
+                </div>
+                <div class="product" data-product-id="16">
+                    <div class="product-favorite" data-product-id="16">&#10084;</div>
+                    <img src="Product 16.jpg" alt="Product 16">
+                    <div class="name">Product 16</div>
+                    <div class="price">129 PLN</div>
+                </div>
+                <div class="product" data-product-id="17">
+                    <div class="product-favorite" data-product-id="17">&#10084;</div>
+                    <img src="Product 17.jpg" alt="Product 17">
+                    <div class="name">Product 17</div>
+                    <div class="price">149 PLN</div>
+                </div>
+                <div class="product" data-product-id="18">
+                    <div class="product-favorite" data-product-id="18">&#10084;</div>
+                    <img src="Product 18.jpg" alt="Product 18">
+                    <div class="name">Product 18</div>
+                    <div class="price">129 PLN</div>
+                </div>
+                <div class="product" data-product-id="19">
+                    <div class="product-favorite" data-product-id="19">&#10084;</div>
+                    <img src="Product 19.jpg" alt="Product 19">
+                    <div class="name">Product 19</div>
+                    <div class="price">149 PLN</div>
+                </div>
+                <div class="product" data-product-id="20">
+                    <div class="product-favorite" data-product-id="20">&#10084;</div>
+                    <img src="Product 20.jpg" alt="Product 20">
+                    <div class="name">Product 20</div>
+                    <div class="price">129 PLN</div>
+                </div>
+                <div class="product" data-product-id="21">
+                    <div class="product-favorite" data-product-id="21">&#10084;</div>
+                    <img src="Product 21.jpg" alt="Product 21">
+                    <div class="name">Product 21</div>
+                    <div class="price">149 PLN</div>
+                </div>
+                <div class="product" data-product-id="22">
+                    <div class="product-favorite" data-product-id="22">&#10084;</div>
+                    <img src="Product 22.jpg" alt="Product 22">
+                    <div class="name">Product 22</div>
+                    <div class="price">129 PLN</div>
+                </div>
+                <div class="product" data-product-id="23">
+                    <div class="product-favorite" data-product-id="23">&#10084;</div>
+                    <img src="Product 23.jpg" alt="Product 23">
+                    <div class="name">Product 23</div>
+                    <div class="price">149 PLN</div>
+                </div>
+            </div>
+        </div>
+       
+        <!-- Favorites view -->
+        <div class="favorites-view" id="favoritesView">
+            <h2 class="favorites-title">Your favorite products</h2>
+            <div class="product-suggestions" id="favoritesList"></div>
+        </div>
+    </div>
+
+    <!-- PRODUCT MODAL -->
+    <div class="product-modal" id="productModal">
+        <div class="modal-content">
+            <span class="close-modal" id="closeModal">&times;</span>
+            <div class="modal-favorite" id="modalFavorite">&#10084;</div>
+            <img class="modal-image" id="modalImage" src="" alt="Product Image">
+            <h2 class="modal-title" id="modalTitle">Product Name</h2>
+            <div class="modal-price" id="modalPrice">0 PLN</div>
+            <div class="modal-description" id="modalDescription">
+            </div>
+            <div class="modal-comments">
+                <h3 class="modal-comments-title">Comments</h3>
+                <div id="commentsContainer">
+                    <!-- Comments will be loaded here -->
+                </div>
+                <div class="add-comment">
+                    <h4>Add comment</h4>
+                    <div class="comment-input">
+                        <input type="text" id="commentAuthor" placeholder="Your name" required>
+                        <textarea id="commentText" placeholder="Your comment..." required></textarea>
+                        <button type="button" class="comment-submit" id="submitComment">Add comment</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

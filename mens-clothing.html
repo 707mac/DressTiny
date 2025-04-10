@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DressTiny</title>
+  <link rel="stylesheet" href="mens-clothing.css">
+</head>
+<body>
+  <!-- EKRAN GŁÓWNY -->
+  <div class="app" id="app-screen">
+    <div class="search-bar-container">
+      <input type="text" class="search-bar" id="search-bar" placeholder="Search..." />
+      <div class="search-suggestions" id="searchSuggestions"></div>
+      <div class="favorites-icon" id="favoritesIcon">&#10084;</div>
+    </div>
+    <div class="logo-container">
+      <div class="app-logo">DressTiny</div>
+    </div>
+
+      <!-- Normal view -->
+    <div id="normalView">
+
+    <div class="product-mens" id="productMens">
+        <div class="product" data-product-id="24">
+          <div class="product-favorite" data-product-id="24">&#10084;</div>
+          <img src="Product 24.jpeg" alt="Product 24">
+          <div class="name">Product 24</div>
+          <div class="price">119 PLN</div>
+        </div>
+
+    
+        <div class="product" data-product-id="25">
+          <div class="product-favorite" data-product-id="25">&#10084;</div>
+          <img src="Product 25.jpeg" alt="Product 25">
+          <div class="name">Product 25</div>
+          <div class="price">55 PLN</div>
+        </div>
+     
+    
+        <div class="product" data-product-id="26">
+          <div class="product-favorite" data-product-id="26">&#10084;</div>
+          <img src="Product 26.jpeg" alt="Product 26">
+          <div class="name">Product 26</div>
+          <div class="price">200 PLN</div>
+        </div>
+        
+    
+        <div class="product" data-product-id="27">
+          <div class="product-favorite" data-product-id="27">&#10084;</div>
+          <img src="Product 27.jpeg" alt="Product 27">
+          <div class="name">Product 27</div>
+          <div class="price">89 PLN</div>
+        </div>
+      
+    
+        <div class="product" data-product-id="28">
+          <div class="product-favorite" data-product-id="28">&#10084;</div>
+          <img src="Product 28.jpeg" alt="Product 28">
+          <div class="name">Product 28</div>
+          <div class="price">67 PLN</div>
+        </div>
+    
+    
+        <div class="product" data-product-id="29">
+          <div class="product-favorite" data-product-id="29">&#10084;</div>
+          <img src="Product 29.jpeg" alt="Product 29">
+          <div class="name">Product 29</div>
+          <div class="price">45 PLN</div>
+        </div>
+
+ <!-- Favorites view -->
+  <div class="favorites-view" id="favoritesView">
+    <h2 class="favorites-title">Your favorite products</h2>
+    <div class="product-suggestions" id="favoritesList"></div>
+  </div>
+</div>
+
+ <!-- PRODUCT MODAL -->
+ <div class="product-modal" id="productModal">
+    <div class="modal-content">
+      <span class="close-modal" id="closeModal">&times;</span>
+      <div class="modal-favorite" id="modalFavorite">&#10084;</div>
+      <img class="modal-image" id="modalImage" src="" alt="Product Image">
+      <h2 class="modal-title" id="modalTitle">Product Name</h2>
+      <div class="modal-price" id="modalPrice">0 PLN</div>
+      <div class="modal-description" id="modalDescription">
+      </div>
+      <div class="modal-comments">
+          <h3 class="modal-comments-title">Comments</h3>
+          <div id="commentsContainer">
+              <!-- Comments will be loaded here -->
+          </div>
+          <div class="add-comment">
+              <h4>Add comment</h4>
+              <div class="comment-input">
+                  <input type="text" id="commentAuthor" placeholder="Your name" required>
+                  <textarea id="commentText" placeholder="Your comment..." required></textarea>
+                  <button type="button" class="comment-submit" id="submitComment">Add comment</button>
+              </div>
+          </div>
+      </div>
+  </div>
+
+      
+        <!-- tu kolejne produkty -->
+      </div>
+<scprit src="mens-clothing.js"></script>
+
+</body>
+</html>

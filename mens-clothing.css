@@ -1,0 +1,566 @@
+/* Add only the logo font import */
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+
+
+body, html {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+    background: linear-gradient(135deg, #4a4a4a, #2d2d2d);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    overflow-x: hidden;
+    width: 100%;
+}
+
+/* Inputy */
+input {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    font-size: 16px;
+    background-color: #f7f7f7;
+    transition: border 0.3s;
+    box-sizing: border-box;
+}
+
+input:focus {
+    outline: none;
+    border: 1px solid #6a6a6a;
+    background-color: #ffffff;
+}
+
+button {
+    width: 100%;
+    padding: 12px;
+    background-color: #6a6a6a;
+    border: none;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    box-sizing: border-box;
+}
+
+button:hover {
+    background-color: #4a4a4a;
+}
+
+textarea {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    font-size: 16px;
+    min-height: 80px;
+    resize: vertical;
+    box-sizing: border-box;
+}
+
+
+.app {
+      background-color: #ffffff;
+      padding: 30px;
+      border-radius: 15px;
+      max-width: 400px;
+      width: 100%;
+      height: 600px;
+      border-radius: 16px;
+      text-align: center;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+      overflow-x: hidden;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction:column;
+      padding: 16px;
+      scrollbar-width: thin;
+      scrollbar-gutter: stable;
+      scrollbar-color: #6a6a6a #f1f1f1;
+}
+
+.app::-webkit-scrollbar {
+      width: 8px;
+      margin-left: 5px;
+}
+
+.app::-webkit-scrollbar-track {
+      background: #f1f1f1;
+      border-radius: 10px;
+}
+
+.app::-webkit-scrollbar-thumb {
+      background: #6a6a6a;
+      border-radius: 10px;
+}
+
+.app::-webkit-scrollbar-thumb:hover {
+  background: #4a4a4a;
+}
+
+.search-bar-container {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      padding: 0 10px 15px;
+      gap: 10px;
+}
+
+
+.search-suggestions {
+    position: absolute;
+    top: calc(100% - 5px);
+    left: 10px;
+    width: calc(80% - 20px);
+    max-height: 300px;
+    overflow-y: auto;
+    background: white;
+    border-radius: 0 0 16px 16px;
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
+    z-index: 100;
+    display: none;
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: all 0.25s ease;
+    backdrop-filter: blur(10px);
+    background-color: rgba(255, 255, 255, 0.95);
+    border: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.search-suggestions.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.search-suggestion-item {
+    padding: 14px 16px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    transition: all 0.2s ease;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.search-suggestion-item:last-child {
+    border-bottom: none;
+}
+
+.search-suggestion-item:hover {
+    background-color: rgba(139, 0, 0, 0.05);
+}
+
+.suggestion-content {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.suggestion-name {
+    font-weight: 600;
+    color: #333;
+    font-size: 15px;
+    line-height: 1.3;
+}
+
+.suggestion-desc {
+    color: #666;
+    font-size: 13px;
+    line-height: 1.4;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.suggestion-price {
+    margin-top: 4px;
+    font-size: 14px;
+    font-weight: 700;
+    color: #8b0000;
+}
+
+
+.search-suggestions::-webkit-scrollbar {
+    width: 6px;
+}
+
+.search-suggestions::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.05);
+    border-radius: 3px;
+}
+
+.search-suggestions::-webkit-scrollbar-thumb {
+    background: rgba(139, 0, 0, 0.2);
+    border-radius: 3px;
+}
+
+.search-suggestions::-webkit-scrollbar-thumb:hover {
+    background: rgba(139, 0, 0, 0.3);
+}
+    
+/* Add logo container styles */
+.logo-container {
+    width: 100%;
+    text-align: center;
+    margin-top: 5px;
+}
+
+/* Logo - tylko logo ma fancy font */
+.app-logo {
+    font-family: 'Pacifico', cursive;
+    font-size: clamp(24px, 6vw, 32px); /* Responsywny rozmiar */
+    color: #8b0000;
+    text-align: center;
+    margin: 0 auto 10px auto;
+    padding-top: -30px;
+    width: 100%;
+    cursor: pointer;
+}
+
+.app-logo:hover {
+    transform: scale(1.05);
+    color: #6a6a6a;
+}
+
+
+.top-bar input {
+  width: 100%;
+  max-width: 260px; 
+  padding: 10px 12px;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  background-color: white;
+}
+
+  body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+  background-color: #2e2e2e;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+
+
+
+/* PROPOZYCJE PRODUKTÓW 
+.product-suggestions {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin: 20px 0;
+    overflow-x: hidden;
+    padding: 10px 0;
+} */
+
+.product {
+    text-align: center;
+    padding: 10px;
+    cursor: pointer;
+    transition: transform 0.2s;
+    position: relative;
+}
+
+.product:hover {
+    transform: scale(1.03);
+}
+
+.product img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.product .name {
+    font-weight: bold;
+    margin-top: 5px;
+}
+
+.product .price {
+    color: #4a4a4a;
+    margin-top: 5px;
+}
+
+.product-favorite {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    font-size: 20px;
+    color: #b0b0b0;
+    cursor: pointer;
+    transition: color 0.3s;
+    z-index: 1;
+}
+
+.product-favorite.active {
+    color: #8b0000;
+}
+
+/* No results message */
+.no-results {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 20px;
+    color: #666;
+    font-size: 18px;
+}
+
+
+/* FAVORITES VIEW */
+.favorites-view {
+    display: none;
+    width: 100%;
+}
+
+.favorites-view.active {
+    display: block;
+}
+
+/* Favorites title - normal font */
+.favorites-title {
+    font-size: 20px;
+    margin-bottom: 20px;
+    color: #4a4a4a;
+    text-align: center;
+    font-weight: bold;
+}
+.favorites-icon {
+    font-size: 24px;
+    cursor: pointer; /* Changed from 'default' to 'pointer' */
+    color: #b0b0b0;
+    transition: all 0.3s ease;
+    flex-shrink: 0;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.favorites-icon:hover {
+    color: #8b0000;
+    transform: scale(1.1);
+    cursor: pointer; /* Ensure it stays pointer on hover */
+}
+
+.favorites-icon.active {
+    color: #8b0000;
+}
+
+/* Change cursor to default pointer */
+.favorites-icon {
+    cursor: default;
+}
+
+/* If you want the pointer cursor only when clickable */
+.favorites-icon.clickable {
+    cursor: pointer;
+}
+
+
+/* MODAL STYLES */
+.product-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 2000;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    box-sizing: border-box;
+    overflow-y: auto;
+}
+
+.product-modal.active {
+    display: flex;
+}
+
+.modal-content {
+    background-color: #ffffff;
+    border-radius: 15px;
+    width: 100%;
+    max-width: 500px;
+    padding: 25px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    position: relative;
+}
+
+.close-modal {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    font-size: 24px;
+    cursor: pointer;
+    color: #666;
+}
+
+.modal-image {
+    width: 100%;
+    height: 300px;
+    object-fit: contain;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.modal-title {
+    font-size: 24px;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.modal-price {
+    font-size: 22px;
+    color: #4a4a4a;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.modal-description {
+    margin-bottom: 20px;
+    line-height: 1.6;
+    color: #555;
+}
+
+.modal-comments {
+    border-top: 1px solid #eee;
+    padding-top: 15px;
+}
+
+.modal-comments-title {
+    font-size: 18px;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.comment {
+    padding: 10px 0;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.comment-author {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.comment-text {
+    color: #666;
+    font-size: 14px;
+}
+
+/* Add to favorites button in modal */
+.modal-favorite {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    font-size: 24px;
+    color: #b0b0b0;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.modal-favorite.active {
+    color: #8b0000;
+}
+
+/* Add comment form */
+.add-comment {
+    margin-top: 20px;
+}
+
+.add-comment h4 {
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.comment-input {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.comment-submit {
+    background-color: #6a6a6a;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.comment-submit:hover {
+    background-color: #4a4a4a;
+}
+
+/* Comment timestamp */
+.comment-date {
+    font-size: 12px;
+    color: #999;
+    margin-top: 3px;
+}
+
+
+/* Favorites icon for sale products */
+.sale-favorite {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    font-size: 18px;
+    color: #b0b0b0;
+    cursor: pointer;
+    transition: all 0.3s;
+    z-index: 2;
+}
+
+.sale-favorite:hover, 
+.sale-favorite.active {
+    color: #8b0000;
+    transform: scale(1.1);
+}
+
+/* Price styling */
+.price-container {
+    display: flex;
+    flex-direction: column;
+    margin-top: 5px;
+}
+
+.current-price {
+    color: #8b0000;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.old-price {
+    text-decoration: line-through;
+    color: #8b0000;
+    font-size: 11px;
+}
+
+/* REGULAR PRODUCTS GRID */
+.product-mens {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    margin: 20px 0;
+    width: 100%;
+    padding: 0 10px;
+    box-sizing: border-box;
+}

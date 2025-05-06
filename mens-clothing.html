@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DressTiny</title>
+  <link rel="stylesheet" href="mens-clothing.css">
+</head>
+<body>
+  <!-- EKRAN GŁÓWNY -->
+  <div class="app" id="app-screen">
+    <div class="search-bar-container">
+      <input type="text" class="search-bar" id="search-bar" placeholder="Search..." />
+      <div class="search-suggestions" id="searchSuggestions"></div>
+      <div class="favorites-icon" id="favoritesIcon">&#10084;</div>
+    </div>
+    <div class="logo-container">
+      <div class="app-logo">DressTiny</div>
+    </div>
+
+  <!-- ZAKLADKI OBUWIE MESKIE -->
+  <div class="product-tabs" id="productTabs">
+    <button class="tab-button" id="tab-blouse">Bluzy</button>
+    <button class="tab-button" id="tab-t-shirt">T-shirty</button>
+    <button class="tab-button" id="tab-sport">Buty</button>
+    <button class="tab-button" id="tab-sweater">Swetry</button>
+    <button class="tab-button" id="tab-socks">Skarpety</button>
+    <button class="tab-button" id="tab-jacket">Kurtki</button>
+    <button class="tab-button" id="tab-trousers">Spodnie</button>
+    <button class="tab-button" id="tab-hat">Czapki</button>
+    <button class="tab-button" id="tab-accessories">Akcesoria</button>
+  </div>
+
+  <div class="filters-bar">
+
+    <!-- SORTOWANIE -->
+    <div class="dropdown">
+      <button class="dropdown-button" onclick="toggleSortDropdown()">
+        <span class="sort-text">Sortuj według</span>
+        <span class="sort-icon">▼</span> 
+      </button>
+      <ul id="sort-dropdown" class="dropdown-menu">
+        <li id="sortLowToHigh">Najniższa cena</li>
+        <li id="sortHighToLow">Najwyższa cena</li>
+        <li id="sortAZ">Nazwa A-Z</li>
+        <li id="sortZA">Nazwa Z-A</li>
+      </ul>
+    </div>
+  
+    <!-- FILTROWANIE -->
+    <div class="dropdown">
+      <button class="dropdown-button" onclick="toggleFilterDropdown()">
+        <span class="sort-text">Filtruj według koloru</span>
+        <span class="sort-icon">▼</span> 
+      </button>
+      <ul id="filter-dropdown" class="dropdown-menu">
+        <li id="filterColorBlack">Czarny</li>
+        <li id="filterColorGreen">Zielony</li>
+        <li id="filterColorBeige">Bezowy</li>
+        <li id="filterColorGrey">Szary</li>
+        <li id="filterColorWhite">Biały</li>
+        <li id="filterColorBrown">Brązowy</li>
+        <li id="filterColorTurquoise">Turkusowy</li>
+        <li id="filterColorAll">Wszystkie kolory</li>
+      </ul>
+    </div>
+  </div>
+  
+ <!-- Favorites view -->
+ <div class="favorites-view" id="favoritesView">
+  <h2 class="favorites-title">Your Favorite Products</h2>
+  <div class="product-suggestions" id="favoritesList"></div>
+</div>
+
+      <!-- Normal view -->
+    <div id="normalView">
+
+    <div class="product-mens" id="productMens">
+        <div class="product" data-product-id="24" data-category="Skarpety" data-color="czarny">
+          <div class="product-favorite" data-product-id="24">&#10084;</div>
+          <img src="Product 24.jpeg" alt="Product 24">
+          <div class="name">Czarne skarpety</div>
+          <div class="price">119 PLN</div>
+        </div>
+
+        <div class="product" data-product-id="73" data-category="Kurtki" data-color="czarny">
+          <div class="product-favorite" data-product-id="73">&#10084;</div>
+          <img src="Product 73.jpeg" alt="Product 73">
+          <div class="name">Lekka kurtka</div>
+          <div class="price">150 PLN</div>
+        </div>
+
+        <div class="product" data-product-id="74" data-category="Kurtki" data-color="czarny">
+          <div class="product-favorite" data-product-id="74">&#10084;</div>
+          <img src="Product 74.jpeg" alt="Product 74">
+          <div class="name">Kurtka puchowa</div>
+          <div class="price">400 PLN</div>
+        </div>
+
+        <div class="product" data-product-id="75" data-category="Kurtki" data-color="biały">
+          <div class="product-favorite" data-product-id="75">&#10084;</div>
+          <img src="Product 75.jpeg" alt="Product 75">
+          <div class="name">Kurtka z polaru</div>
+          <div class="price">499 PLN</div>
+        </div>
+
+        <div class="product" data-product-id="76" data-category="Kurtki" data-color="czarny">
+          <div class="product-favorite" data-product-id="76">&#10084;</div>
+          <img src="Product 76.jpeg" alt="Product 76">
+          <div class="name">Zimowa kurtka puchowa</div>
+          <div class="price">346 PLN</div>
+        </div>
+
+        <div class="product" data-product-id="77" data-category="Kurtki" data-color="czarny">
+          <div class="product-favorite" data-product-id="77">&#10084;</div>
+          <img src="Product 77.jpeg" alt="Product 77">
+          <div class="name">Kurtka narciarska</div>
+          <div class="price">519 PLN</div>
+        </div>
+
+        <div class="product" data-product-id="78" data-category="Kurtki" data-color="brązowy">
+          <div class="product-favorite" data-product-id="78">&#10084;</div>
+          <img src="Product 78.jpeg" alt="Product 78">
+          <div class="name">Kurtka jesienna</div>
+          <div class="price">287 PLN</div>
+        </div>
+
+        <div class="product" data-product-id="79" data-category="Spodnie" data-color="szary">
+          <div class="product-favorite" data-product-id="79">&#10084;</div>
+          <img src="Product 79.jpeg" alt="Product 79">
+          <div class="name">Szare spodnie</div>
+          <div class="price">79 PLN</div>
+        </div>
+
+        <div class="product" data-product-id="80" data-category="Spodnie" data-color="czarny">
+          <div class="product-favorite" data-product-id="80">&#10084;</div>
+          <img src="Product 80.jpeg" alt="Product 80">
+          <div class="name">Czarne spodnie</div>
+          <div class="price">85 PLN</div>
+        </div>
+
+        <div class="product" data-product-id="81" data-category="Spodnie" data-color="czarny">
+          <div class="product-favorite" data-product-id="81">&#10084;</div>
+          <img src="Product 81.jpeg" alt="Product 81">
+          <div class="name">Spodnie narciarskie</div>
+          <div class="price">90 PLN</div>
+        </div>
+
+        <div class="product" data-product-id="82" data-category="Spodnie" data-color="zielony">
+          <div class="product-favorite" data-product-id="82">&#10084;</div>
+          <img src="Product 82.jpeg" alt="Product 82">
+          <div class="name">Spodnie dresowe</div>
+          <div class="price">39 PLN</div>
+        </div>
+
+        <div class="product" data-product-id="25" data-category="Buty" data-color="czarny">
+          <div class="product-favorite" data-product-id="25">&#10084;</div>
+          <img src="Product 25.jpeg" alt="Product 25">
+          <div class="name">Czarne buty</div>
+          <div class="price">55 PLN</div>
+        </div>
+
+        <div class="product" data-product-id="67" data-category="Buty" data-color="biały">
+          <div class="product-favorite" data-product-id="67">&#10084;</div>
+          <img src="Product 67.jpeg" alt="Product 67">
+          <div class="name">Buty sportowe nike</div>
+          <div class="price">120 PLN</div>
+        </div>
+
+        <div class="product" data-product-id="68" data-category="Buty" data-color="czarny">
+          <div class="product-favorite" data-product-id="68">&#10084;</div>
+          <img src="Product 68.jpeg" alt="Product 68">
+          <div class="name">Buty sportowe puma</div>
+          <div class="price">225 PLN</div>
+        </div>
+
+        <div class="product" data-product-id="69" data-category="Buty" data-color="czarny">
+          <div class="product-favorite" data-product-id="69">&#10084;</div>
+          <img src="Product 69.jpeg" alt="Product 69">
+          <div class="name">Buty new balance</div>
+          <div class="price">299 PLN</div>
+        </div>
+
+        <div class="product" data-product-id="70" data-category="Buty" data-color="biały">
+          <div class="product-favorite" data-product-id="70">&#10084;</div>
+          <img src="Product 70.jpeg" alt="Product 70">
+          <div class="name">Białe buty nike</div>
+          <div class="price">425 PLN</div>
+        </div>
+
+        <div class="product" data-product-id="71" data-category="Buty" data-color="bezowy">
+          <div class="product-favorite" data-product-id="71">&#10084;</div>
+          <img src="Product 71.jpeg" alt="Product 71">
+          <div class="name">Buty sportowe nike</div>
+          <div class="price">399 PLN</div>
+        </div>
+
+        <div class="product" data-product-id="72" data-category="Buty" data-color="brązowy">
+          <div class="product-favorite" data-product-id="72">&#10084;</div>
+          <img src="Product 72.jpeg" alt="Product 72">
+          <div class="name">Buty nike dunk</div>
+          <div class="price">489 PLN</div>
+        </div>
+
+        <div class="product" data-product-id="26" data-category="Skarpety" data-color="biały"> 
+          <div class="product-favorite" data-product-id="26">&#10084;</div>
+          <img src="Product 26.jpeg" alt="Product 26">
+          <div class="name">Długie skarpety</div>
+          <div class="price">200 PLN</div>
+        </div>
+        
+        <div class="product" data-product-id="27" data-category="Buty" data-color="szary">
+          <div class="product-favorite" data-product-id="27">&#10084;</div>
+          <img src="Product 27.jpeg" alt="Product 27">
+          <div class="name">Jasno szare buty zimowe</div>
+          <div class="price">89 PLN</div>
+        </div>
+    
+        <div class="product" data-product-id="28" data-category="Bluzy" data-color="czarny">
+          <div class="product-favorite" data-product-id="28">&#10084;</div>
+          <img src="Product 28.jpeg" alt="Product 28">
+          <div class="name">Sportowa rozpinana bluza</div>
+          <div class="price">67 PLN</div>
+        </div>
+  
+        <div class="product" data-product-id="29" data-category="T-Shirty" data-color="szary">
+          <div class="product-favorite" data-product-id="29">&#10084;</div>
+          <img src="Product 29.jpeg" alt="Product 29">
+          <div class="name">Szary t-shirt</div>
+          <div class="price">45 PLN</div>
+        </div>
+
+        <div class="product" data-product-id="30" data-category="Swetry">
+          <div class="product-favorite" data-product-id="30">&#10084;</div>
+          <img src="Product 30.jpeg" alt="Product 30">
+          <div class="name">2pak swetrów jesiennych</div>
+          <div class="price">110 PLN</div>
+        </div>
+
+        <div class="product" data-product-id="31" data-category="Swetry" data-color="biały">
+          <div class="product-favorite" data-product-id="31">&#10084;</div>
+          <img src="Product 31.jpeg" alt="Product 31">
+          <div class="name">Biały golf</div>
+          <div class="price">60 PLN</div>
+        </div>
+
+        <div class="product" data-product-id="32" data-category="Swetry" data-color="biały">
+          <div class="product-favorite" data-product-id="32">&#10084;</div>
+          <img src="Product 32.jpeg" alt="Product 32">
+          <div class="name">Jasny sweter z wiskozy</div>
+          <div class="price">75 PLN</div>
+        </div>
+
+        <div class="product" data-product-id="33" data-category="Swetry" data-color="biały">
+          <div class="product-favorite" data-product-id="33">&#10084;</div>
+          <img src="Product 33.jpeg" alt="Product 33">
+          <div class="name">Biały dopasowany sweter</div>
+          <div class="price">89 PLN</div>
+        </div>
+
+        <div class="product" data-product-id="34" data-category="Swetry" data-color="bezowy">
+          <div class="product-favorite" data-product-id="34">&#10084;</div>
+          <img src="Product 34.jpeg" alt="Product 34">
+          <div class="name">Bezowy sweter</div>
+          <div class="price">99 PLN</div>
+        </div>
+
+        <div class="product" data-product-id="35" data-category="Swetry" data-color="biały">
+          <div class="product-favorite" data-product-id="35">&#10084;</div>
+          <img src="Product 35.jpeg" alt="Product 35">
+          <div class="name">Biały lekki sweter</div>
+          <div class="price">79 PLN</div>
+        </div>
+
+        <div class="product" data-product-id="36" data-category="Skarpety" data-color="biały">
+          <div class="product-favorite" data-product-id="36">&#10084;</div>
+          <img src="Product 36.jpeg" alt="Product 36">
+          <div class="name">4pak skarpet</div>
+          <div class="price">35 PLN</div>
+        </div>
+
+        <div class="product" data-product-id="37" data-category="Skarpety">
+          <div class="product-favorite" data-product-id="37">&#10084;</div>
+          <img src="Product 37.jpeg" alt="Product 37">
+          <div class="name">3pak krótkich skarpet</div>
+          <div class="price">30 PLN</div>
+        </div>
+
+        <div class="product" data-product-id="38" data-category="Skarpety">
+          <div class="product-favorite" data-product-id="38">&#10084;</div>
+          <img src="Product 38.jpeg" alt="Product 38">
+          <div class="name">3pak skarpet</div>
+          <div class="price">45 PLN</div>
+        </div>
+
+        <div class="product" data-product-id="39" data-category="Skarpety" data-color="biały">
+          <div class="product-favorite" data-product-id="39">&#10084;</div>
+          <img src="Product 39.jpeg" alt="Product 39">
+          <div class="name">Zestaw czarnych skarpet</div>
+          <div class="price">50 PLN</div>
+        </div>
+
+        <div class="product" data-product-id="40" data-category="Skarpety" data-color="czarny">
+          <div class="product-favorite" data-product-id="40">&#10084;</div>
+          <img src="Product 40.jpeg" alt="Product 40">
+          <div class="name">Długie sportowe skarpety</div>
+          <div class="price">38 PLN</div>
+        </div>
+
+        <div class="product" data-product-id="41" data-category="Skarpety" data-color="czarny">
+          <div class="product-favorite" data-product-id="41">&#10084;</div>
+          <img src="Product 41.jpeg" alt="Product 41">
+          <div class="name">3pak skarpet długich 4F</div>
+          <div class="price">65 PLN</div>
+        </div>
+
+        <div class="product" data-product-id="42" data-category="Skarpety" data-color="czarny">
+          <div class="product-favorite" data-product-id="42">&#10084;</div>
+          <img src="Product 42.jpeg" alt="Product 42">
+          <div class="name">3pak długich skarpet adidas</div>
+          <div class="price">59 PLN</div>
+        </div>
+
+        <div class="product" data-product-id="43" data-category="Skarpety" data-color="szary">
+          <div class="product-favorite" data-product-id="43">&#10084;</div>
+          <img src="Product 43.jpeg" alt="Product 43">
+          <div class="name">Skarpety narciarskie</div>
+          <div class="price">39 PLN</div>
+        </div>
+
+        <div class="product" data-product-id="44" data-category="Skarpety" data-color="biały">
+          <div class="product-favorite" data-product-id="44">&#10084;</div>
+          <img src="Product 44.jpeg" alt="Product 44">
+          <div class="name">3pak długich skarpet adidas</div>
+          <div class="price">38 PLN</div>
+        </div>
+
+        <div class="product" data-product-id="47" data-category="Skarpety" data-color="czarny">
+          <div class="product-favorite" data-product-id="47">&#10084;</div>
+          <img src="Product 47.jpeg" alt="Product 47">
+          <div class="name">Długie czarne skarpety</div>
+          <div class="price">67 PLN</div>
+        </div>
+
+        <div class="product" data-product-id="48" data-category="Skarpety" data-color="biały">
+          <div class="product-favorite" data-product-id="48">&#10084;</div>
+          <img src="Product 48.jpeg" alt="Product 48">
+          <div class="name">Zestaw białych skarpet</div>
+          <div class="price">55 PLN</div>
+        </div>     
+
+        <div class="product" data-product-id="49" data-category="T-Shirty" data-color="czarny">
+          <div class="product-favorite" data-product-id="49">&#10084;</div>
+          <img src="Product 49.jpeg" alt="Product 49">
+          <div class="name">Czarny t-shirt</div>
+          <div class="price">49 PLN</div>
+        </div>     
+
+        <div class="product" data-product-id="50" data-category="T-Shirty" data-color="biały">
+          <div class="product-favorite" data-product-id="50">&#10084;</div>
+          <img src="Product 50.jpeg" alt="Product 50">
+          <div class="name">Biały t-shirt</div>
+          <div class="price">55 PLN</div>
+        </div>    
+
+        <div class="product" data-product-id="51" data-category="T-Shirty" data-color="zielony">
+          <div class="product-favorite" data-product-id="51">&#10084;</div>
+          <img src="Product 51.jpeg" alt="Product 51">
+          <div class="name">Ciemnozielony t-shirt</div>
+          <div class="price">99 PLN</div>
+        </div>    
+
+        <div class="product" data-product-id="52" data-category="T-Shirty" data-color="czarny">
+          <div class="product-favorite" data-product-id="52">&#10084;</div>
+          <img src="Product 52.jpeg" alt="Product 52">
+          <div class="name">Czarny t-shirt</div>
+          <div class="price">101 PLN</div>
+        </div>    
+
+        <div class="product" data-product-id="53" data-category="T-Shirty" data-color="biały">
+          <div class="product-favorite" data-product-id="53">&#10084;</div>
+          <img src="Product 53.jpeg" alt="Product 53">
+          <div class="name">Biały t-shirt oversize</div>
+          <div class="price">79 PLN</div>
+        </div>    
+
+        <div class="product" data-product-id="54" data-category="T-Shirty" data-color="bezowy">
+          <div class="product-favorite" data-product-id="54">&#10084;</div>
+          <img src="Product 54.jpeg" alt="Product 54">
+          <div class="name">Bezowy t-shirt</div>
+          <div class="price">85 PLN</div>
+        </div>    
+
+        <div class="product" data-product-id="55" data-category="T-Shirty" data-color="szary">
+          <div class="product-favorite" data-product-id="55">&#10084;</div>
+          <img src="Product 55.jpeg" alt="Product 55">
+          <div class="name">Jasno szary t-shirt</div>
+          <div class="price">89 PLN</div>
+        </div> 
+        
+        <div class="product" data-product-id="56" data-category="T-Shirty" data-color="czarny">
+          <div class="product-favorite" data-product-id="56">&#10084;</div>
+          <img src="Product 56.jpeg" alt="Product 56">
+          <div class="name">Czarny dopasowany t-shirt</div>
+          <div class="price">105 PLN</div>
+        </div>    
+
+        <div class="product" data-product-id="57" data-category="T-Shirty" data-color="bezowy">
+          <div class="product-favorite" data-product-id="57">&#10084;</div>
+          <img src="Product 57.jpeg" alt="Product 57">
+          <div class="name">Jasno bezowy t-shirt z logiem</div>
+          <div class="price">50 PLN</div>
+        </div>    
+
+        <div class="product" data-product-id="58" data-category="T-Shirty" data-color="brązowy">
+          <div class="product-favorite" data-product-id="58">&#10084;</div>
+          <img src="Product 58.jpeg" alt="Product 58">
+          <div class="name">Jasno brązowy t-shirt </div>
+          <div class="price">39 PLN</div>
+        </div>    
+
+        <div class="product" data-product-id="59" data-category="T-Shirty" data-color="turkusowy">
+          <div class="product-favorite" data-product-id="59">&#10084;</div>
+          <img src="Product 59.jpeg" alt="Product 59">
+          <div class="name">Bawełniany T-shirt</div>
+          <div class="price">56 PLN</div>
+        </div>    
+
+        
+        <div class="product" data-product-id="61" data-category="Bluzy" data-color="brązowy">
+          <div class="product-favorite" data-product-id="61">&#10084;</div>
+          <img src="Product 61.jpeg" alt="Product 61">
+          <div class="name">Jasno brązowa bluza z kapturem</div>
+          <div class="price">199 PLN</div>
+        </div>
+        
+        <div class="product" data-product-id="62" data-category="Bluzy" data-color="szary">
+          <div class="product-favorite" data-product-id="62">&#10084;</div>
+          <img src="Product 62.jpeg" alt="Product 62">
+          <div class="name">Szara bluza z kapturem</div>
+          <div class="price">149 PLN</div>
+        </div> 
+
+        <div class="product" data-product-id="63" data-category="Bluzy" data-color="czarny">
+          <div class="product-favorite" data-product-id="63">&#10084;</div>
+          <img src="Product 63.jpeg" alt="Product 63">
+          <div class="name">Czarna bluza z kapturem</div>
+          <div class="price">129 PLN</div>
+        </div> 
+
+        <div class="product" data-product-id="64" data-category="Bluzy" data-color="zielony">
+          <div class="product-favorite" data-product-id="64">&#10084;</div>
+          <img src="Product 64.jpeg" alt="Product 64">
+          <div class="name">Jasno zielona bluza z kapturem</div>
+          <div class="price">155 PLN</div>
+        </div> 
+
+        <div class="product" data-product-id="65" data-category="Bluzy" data-color="biały">
+          <div class="product-favorite" data-product-id="65">&#10084;</div>
+          <img src="Product 65.jpeg" alt="Product 65">
+          <div class="name">Biała bluza</div>
+          <div class="price">201 PLN</div>
+        </div> 
+
+        <div class="product" data-product-id="66" data-category="Bluzy" data-color="czarny">
+          <div class="product-favorite" data-product-id="66">&#10084;</div>
+          <img src="Product 66.jpeg" alt="Product 66">
+          <div class="name">Czarna bluza z kapturem</div>
+          <div class="price">299 PLN</div>
+        </div> 
+
+        <div class="product" data-product-id="83" data-category="Czapki" data-color="szary">
+          <div class="product-favorite" data-product-id="83">&#10084;</div>
+          <img src="Product 83.jpeg" alt="Product 83">
+          <div class="name">Czapka z daszkiem</div>
+          <div class="price">119 PLN</div>
+        </div>
+
+        <div class="product" data-product-id="84" data-category="Czapki" data-color="czarny">
+          <div class="product-favorite" data-product-id="84">&#10084;</div>
+          <img src="Product 84.jpeg" alt="Product 84">
+          <div class="name">Czarna czapka</div>
+          <div class="price">69 PLN</div>
+        </div>
+
+        <div class="product" data-product-id="85" data-category="Czapki" data-color="czarny">
+          <div class="product-favorite" data-product-id="85">&#10084;</div>
+          <img src="Product 85.jpeg" alt="Product 85">
+          <div class="name">Czarna czapka na zimę</div>
+          <div class="price">87 PLN</div>
+        </div>
+
+        <div class="product" data-product-id="86" data-category="Czapki" data-color="czarny">
+          <div class="product-favorite" data-product-id="86">&#10084;</div>
+          <img src="Product 86.jpeg" alt="Product 86">
+          <div class="name">Czarna czapka z daszkiem z logo</div>
+          <div class="price">187 PLN</div>
+        </div>
+
+        <div class="product" data-product-id="87" data-category="Akcesoria" data-color="czarny">
+          <div class="product-favorite" data-product-id="87">&#10084;</div>
+          <img src="Product 87.jpeg" alt="Product 87">
+          <div class="name">Okulary przeciwsłoneczne</div>
+          <div class="price">78 PLN</div>
+        </div>
+
+        <div class="product" data-product-id="88" data-category="Akcesoria" data-color="czarny">
+          <div class="product-favorite" data-product-id="88">&#10084;</div>
+          <img src="Product 88.jpeg" alt="Product 88">
+          <div class="name">Kosmetyczka męska</div>
+          <div class="price">67 PLN</div>
+        </div>
+
+        <div class="product" data-product-id="89" data-category="Akcesoria" data-color="brązowy">
+          <div class="product-favorite" data-product-id="89">&#10084;</div>
+          <img src="Product 89.jpeg" alt="Product 89">
+          <div class="name">Torba sportowa puma</div>
+          <div class="price">99 PLN</div>
+        </div> 
+
+        <div class="product" data-product-id="90" data-category="Akcesoria" data-color="czarny">
+          <div class="product-favorite" data-product-id="90">&#10084;</div>
+          <img src="Product 90.jpeg" alt="Product 90">
+          <div class="name">Czarna kosmetyczka męska</div>
+          <div class="price">76 PLN</div>
+        </div> 
+
+        <div class="product" data-product-id="91" data-category="Akcesoria" data-color="czarny">
+          <div class="product-favorite" data-product-id="91">&#10084;</div>
+          <img src="Product 91.jpeg" alt="Product 91">
+          <div class="name">Perfumy męskie</div>
+          <div class="price">55 PLN</div>
+        </div> 
+</div>
+
+ <!-- PRODUCT MODAL -->
+ <div class="product-modal" id="productModal">
+    <div class="modal-content">
+      <span class="close-modal" id="closeModal">&times;</span>
+      <div class="modal-favorite" id="modalFavorite">&#10084;</div>
+      <img class="modal-image" id="modalImage" src="" alt="Product Image">
+      <h2 class="modal-title" id="modalTitle">Product Name</h2>
+      <div class="modal-price" id="modalPrice">0 PLN</div>
+      <div class="modal-description" id="modalDescription">
+      </div>
+      <div class="modal-comments">
+          <h3 class="modal-comments-title">Comments</h3>
+          <div id="commentsContainer">
+              <!-- KOMENTARZE -->
+          </div>
+          <div class="add-comment">
+              <h4>Add comment</h4>
+              <div class="comment-input">
+                  <input type="text" id="commentAuthor" placeholder="Your name" required>
+                  <textarea id="commentText" placeholder="Your comment..." required></textarea>
+                  <button type="button" class="comment-submit" id="submitComment">Add comment</button>
+              </div>
+          </div>
+      </div>
+  </div>
+
+<script src="mens-clothing.js"></script>
+
+</body>
+</html>

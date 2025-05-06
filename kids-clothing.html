@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DressTiny</title>
+  <link rel="stylesheet" href="kids-clothing.css">
+</head>
+<body>
+
+   <!-- EKRAN GŁÓWNY -->
+   <div class="app" id="app-screen">
+    <div class="search-bar-container">
+      <input type="text" class="search-bar" id="search-bar" placeholder="Search..." />
+      <div class="search-suggestions" id="searchSuggestions"></div>
+      <div class="favorites-icon" id="favoritesIcon">&#10084;</div>
+    </div>
+    <div class="logo-container">
+      <div class="app-logo">DressTiny</div>
+    </div>
+
+  <!-- ZAKLADKI OBUWIE DAMSKIE -->
+  <div class="product-tabs" id="productTabs">
+    <button class="tab-button" id="tab-blouse">Bluzy</button>
+    <button class="tab-button" id="tab-t-shirt">T-shirty</button>
+    <button class="tab-button" id="tab-sport">Buty</button>
+    <button class="tab-button" id="tab-sweater">Swetry</button>
+    <button class="tab-button" id="tab-socks">Skarpety</button>
+    <button class="tab-button" id="tab-jacket">Kurtki</button>
+    <button class="tab-button" id="tab-trousers">Spodnie</button>
+    <button class="tab-button" id="tab-hat">Czapki</button>
+    <button class="tab-button" id="tab-accessories">Akcesoria</button>
+  </div>
+
+  <div class="filters-bar">
+
+    <!-- SORTOWANIE -->
+    <div class="dropdown">
+      <button class="dropdown-button" onclick="toggleSortDropdown()">
+        <span class="sort-text">Sortuj według</span>
+        <span class="sort-icon">▼</span> 
+      </button>
+      <ul id="sort-dropdown" class="dropdown-menu">
+        <li id="sortLowToHigh">Najniższa cena</li>
+        <li id="sortHighToLow">Najwyższa cena</li>
+        <li id="sortAZ">Nazwa A-Z</li>
+        <li id="sortZA">Nazwa Z-A</li>
+      </ul>
+    </div>
+  
+    <!-- FILTROWANIE -->
+    <div class="dropdown">
+      <button class="dropdown-button" onclick="toggleFilterDropdown()">
+        <span class="sort-text">Filtruj według koloru</span>
+        <span class="sort-icon">▼</span> 
+      </button>
+      <ul id="filter-dropdown" class="dropdown-menu">
+        <li id="filterColorBlack">Czarny</li>
+        <li id="filterColorGreen">Zielony</li>
+        <li id="filterColorBeige">Bezowy</li>
+        <li id="filterColorGrey">Szary</li>
+        <li id="filterColorWhite">Biały</li>
+        <li id="filterColorBrown">Brązowy</li>
+        <li id="filterColorTurquoise">Turkusowy</li>
+        <li id="filterColorPink">Rozowy</li>
+        <li id="filterColorBlue">Niebieski</li>
+        <li id="filterColorAll">Wszystkie kolory</li>
+      </ul>
+    </div>
+  </div>
+  
+ <!-- Favorites view -->
+ <div class="favorites-view" id="favoritesView">
+  <h2 class="favorites-title">Your Favorite Products</h2>
+  <div class="product-suggestions" id="favoritesList"></div>
+</div>
+
+      <!-- Normal view -->
+    <div id="normalView">
+
+    <div class="product-kids" id="productKids">
+        <div class="product" data-product-id="131" data-category="Bluzy" data-color="Brązowy">
+          <div class="product-favorite" data-product-id="131">&#10084;</div>
+          <img src="Product 131.jpeg" alt="Product 131">
+          <div class="name">Brązowa bluza</div>
+          <div class="price">59 PLN</div>
+        </div>
+
+        <div class="product" data-product-id="132" data-category="Bluzy" data-color="bezowy">
+          <div class="product-favorite" data-product-id="132">&#10084;</div>
+          <img src="Product 132.jpeg" alt="Product 132">
+          <div class="name">Bluza z nadrukiem</div>
+          <div class="price">87 PLN</div>
+        </div>
+
+        <div class="product" data-product-id="133" data-category="Bluzy" data-color="Brązowy">
+          <div class="product-favorite" data-product-id="133">&#10084;</div>
+          <img src="Product 133.jpeg" alt="Product 133">
+          <div class="name">Brązowa bawełniana bluza</div>
+          <div class="price">67 PLN</div>
+        </div>
+
+        <div class="product" data-product-id="134" data-category="Bluzy" data-color="biały">
+          <div class="product-favorite" data-product-id="134">&#10084;</div>
+          <img src="Product 134.jpeg" alt="Product 134">
+          <div class="name">Bluza ze wzorkami</div>
+          <div class="price">99 PLN</div>
+        </div>
+
+        <div class="product" data-product-id="135" data-category="T-Shirty" data-color="biały">
+          <div class="product-favorite" data-product-id="135">&#10084;</div>
+          <img src="Product 135.jpeg" alt="Product 135">
+          <div class="name">Biały t-shirt dziecięcy</div>
+          <div class="price">29 PLN</div>
+        </div>
+
+        <div class="product" data-product-id="137" data-category="T-Shirty" data-color="Brązowy">
+          <div class="product-favorite" data-product-id="137">&#10084;</div>
+          <img src="Product 137.jpeg" alt="Product 137">
+          <div class="name">Brązowy t-shirt dziecięcy</div>
+          <div class="price">35 PLN</div>
+        </div>
+
+        <div class="product" data-product-id="138" data-category="T-Shirty" data-color="Rozowy">
+          <div class="product-favorite" data-product-id="138">&#10084;</div>
+          <img src="Product 138.jpeg" alt="Product 138">
+          <div class="name">T-shirt z króliczkiem</div>
+          <div class="price">49 PLN</div>
+        </div>
+
+        <div class="product" data-product-id="139" data-category="T-Shirty" data-color="zielony">
+          <div class="product-favorite" data-product-id="139">&#10084;</div>
+          <img src="Product 139.jpeg" alt="Product 139">
+          <div class="name">Lekki t-shirt dziecięcy</div>
+          <div class="price">25 PLN</div>
+        </div>
+
+        <div class="product" data-product-id="140" data-category="Buty" data-color="Rozowy">
+          <div class="product-favorite" data-product-id="140">&#10084;</div>
+          <img src="Product 140.jpeg" alt="Product 140">
+          <div class="name">Buty sportowe dziecięce</div>
+          <div class="price">150 PLN</div>
+        </div>
+
+        <div class="product" data-product-id="141" data-category="Buty" data-color="Niebieski">
+          <div class="product-favorite" data-product-id="141">&#10084;</div>
+          <img src="Product 141.jpeg" alt="Product 141">
+          <div class="name">Niebieskie dziecięce buty sportowe</div>
+          <div class="price">140 PLN</div>
+        </div>
+
+        <div class="product" data-product-id="142" data-category="Buty" data-color="biały">
+          <div class="product-favorite" data-product-id="142">&#10084;</div>
+          <img src="Product 142.jpeg" alt="Product 142">
+          <div class="name">Dziecięce kalosze</div>
+          <div class="price">225 PLN</div>
+        </div>
+
+        <div class="product" data-product-id="143" data-category="Buty" data-color="Brązowy">
+          <div class="product-favorite" data-product-id="143">&#10084;</div>
+          <img src="Product 143.jpeg" alt="Product 143">
+          <div class="name">Zimowe buty dziecięce</div>
+          <div class="price">399 PLN</div>
+        </div>
+
+        <div class="product" data-product-id="163" data-category="Spodnie" data-color="Rozowy">
+          <div class="product-favorite" data-product-id="163">&#10084;</div>
+          <img src="Product 163.jpeg" alt="Product 163">
+          <div class="name">Dziecięce spodnie dresowe</div>
+          <div class="price">35 PLN</div>
+        </div>
+
+        <div class="product" data-product-id="160" data-category="Spodnie" data-color="Rozowy">
+          <div class="product-favorite" data-product-id="160">&#10084;</div>
+          <img src="Product 160.jpeg" alt="Product 160">
+          <div class="name">Dziecięce legginsy</div>
+          <div class="price">26 PLN</div>
+        </div>
+
+        <div class="product" data-product-id="161" data-category="Spodnie" data-color="Rozowy">
+          <div class="product-favorite" data-product-id="161">&#10084;</div>
+          <img src="Product 161.jpeg" alt="Product 161">
+          <div class="name">Dziecięce legginsy</div>
+          <div class="price">30 PLN</div>
+        </div>
+
+        <div class="product" data-product-id="162" data-category="Spodnie" data-color="Rozowy">
+          <div class="product-favorite" data-product-id="162">&#10084;</div>
+          <img src="Product 162.jpeg" alt="Product 162">
+          <div class="name">Dziecięce spodnie dresowe</div>
+          <div class="price">89 PLN</div>
+        </div>
+
+        <div class="product" data-product-id="144" data-category="Swetry" data-color="Zielony">
+          <div class="product-favorite" data-product-id="144">&#10084;</div>
+          <img src="Product 144.jpeg" alt="Product 144">
+          <div class="name">Sweter z napisem</div>
+          <div class="price">39 PLN</div>
+        </div>
+
+        <div class="product" data-product-id="145" data-category="Swetry" data-color="czarny">
+          <div class="product-favorite" data-product-id="145">&#10084;</div>
+          <img src="Product 145.jpeg" alt="Product 145">
+          <div class="name">Zestaw swetrów dziecięcych</div>
+          <div class="price">79 PLN</div>
+        </div>
+
+        <div class="product" data-product-id="146" data-category="Swetry" data-color="biały">
+          <div class="product-favorite" data-product-id="146">&#10084;</div>
+          <img src="Product 146.jpeg" alt="Product 146">
+          <div class="name">Biały sweterek dziecięcy</div>
+          <div class="price">35 PLN</div>
+        </div>
+
+        <div class="product" data-product-id="147" data-category="Swetry" data-color="bezowy">
+          <div class="product-favorite" data-product-id="147">&#10084;</div>
+          <img src="Product 147.jpeg" alt="Product 147">
+          <div class="name">Sweterek dziecięcy</div>
+          <div class="price">79 PLN</div>
+        </div>
+
+        <div class="product" data-product-id="148" data-category="Skarpety" data-color="biały">
+          <div class="product-favorite" data-product-id="148">&#10084;</div>
+          <img src="Product 148.jpeg" alt="Product 148">
+          <div class="name">Krótkie skarpetki</div>
+          <div class="price">20 PLN</div>
+        </div>
+
+        <div class="product" data-product-id="149" data-category="Skarpety" data-color="biały">
+          <div class="product-favorite" data-product-id="149">&#10084;</div>
+          <img src="Product 149.jpeg" alt="Product 149">
+          <div class="name">Zestaw skarpet</div>
+          <div class="price">49 PLN</div>
+        </div>
+
+        <div class="product" data-product-id="150" data-category="Skarpety" data-color="Niebieski">
+          <div class="product-favorite" data-product-id="150">&#10084;</div>
+          <img src="Product 150.jpeg" alt="Product 150">
+          <div class="name">Skarpetki z nadrukiem</div>
+          <div class="price">14 PLN</div>
+        </div>
+
+        <div class="product" data-product-id="151" data-category="Skarpety" data-color="biały">
+          <div class="product-favorite" data-product-id="151">&#10084;</div>
+          <img src="Product 151.jpeg" alt="Product 151">
+          <div class="name">Zestaw skarpet</div>
+          <div class="price">65 PLN</div>
+        </div>
+
+        <div class="product" data-product-id="152" data-category="Kurtki" data-color="bezowy">
+          <div class="product-favorite" data-product-id="152">&#10084;</div>
+          <img src="Product 152.jpeg" alt="Product 152">
+          <div class="name">Kurtka przejściowa dziecięca</div>
+          <div class="price">119 PLN</div>
+        </div>
+
+        <div class="product" data-product-id="153" data-category="Kurtki" data-color="bezowy">
+          <div class="product-favorite" data-product-id="153">&#10084;</div>
+          <img src="Product 153.jpeg" alt="Product 153">
+          <div class="name">Kurtka przejściowa</div>
+          <div class="price">79 PLN</div>
+        </div>
+
+        <div class="product" data-product-id="154" data-category="Kurtki" data-color="bezowy">
+          <div class="product-favorite" data-product-id="154">&#10084;</div>
+          <img src="Product 154.jpeg" alt="Product 154">
+          <div class="name">Kurtka zimowa</div>
+          <div class="price">190 PLN</div>
+        </div>
+
+        <div class="product" data-product-id="155" data-category="Kurtki" data-color="Rozowy">
+          <div class="product-favorite" data-product-id="155">&#10084;</div>
+          <img src="Product 155.jpeg" alt="Product 155">
+          <div class="name">Kurtka pikowana dziecięca</div>
+          <div class="price">120 PLN</div>
+        </div>
+
+        <div class="product" data-product-id="156" data-category="Czapki" data-color="Brązowy">
+          <div class="product-favorite" data-product-id="156">&#10084;</div>
+          <img src="Product 156.jpeg" alt="Product 156">
+          <div class="name">Czapka za zimę dziecięca</div>
+          <div class="price">29 PLN</div>
+        </div>
+
+        <div class="product" data-product-id="157" data-category="Czapki" data-color="biały">
+          <div class="product-favorite" data-product-id="157">&#10084;</div>
+          <img src="Product 157.jpeg" alt="Product 157">
+          <div class="name">Czapka dla niemowlaków</div>
+          <div class="price">69 PLN</div>
+        </div>
+
+        <div class="product" data-product-id="158" data-category="Czapki" data-color="bezowy">
+          <div class="product-favorite" data-product-id="158">&#10084;</div>
+          <img src="Product 158.jpeg" alt="Product 158">
+          <div class="name">Czapka jesienna dziecięca</div>
+          <div class="price">69 PLN</div>
+        </div>
+
+        <div class="product" data-product-id="159" data-category="Czapki" data-color="szary">
+          <div class="product-favorite" data-product-id="159">&#10084;</div>
+          <img src="Product 159.jpeg" alt="Product 159">
+          <div class="name">Czapka jesienna dziecięca</div>
+          <div class="price">69 PLN</div>
+        </div>
+
+        <div class="product" data-product-id="164" data-category="Akcesoria" data-color="Brązowy">
+          <div class="product-favorite" data-product-id="164">&#10084;</div>
+          <img src="Product 164.jpeg" alt="Product 164">
+          <div class="name">Zabawka dziecięca</div>
+          <div class="price">12 PLN</div>
+        </div>
+
+        <div class="product" data-product-id="165" data-category="Akcesoria" data-color="Rozowy">
+          <div class="product-favorite" data-product-id="165">&#10084;</div>
+          <img src="Product 165.jpeg" alt="Product 165">
+          <div class="name">Ręcznik dziecięcy</div>
+          <div class="price">67 PLN</div>
+        </div>
+
+        <div class="product" data-product-id="166" data-category="Akcesoria" data-color="biały">
+          <div class="product-favorite" data-product-id="166">&#10084;</div>
+          <img src="Product 166.jpeg" alt="Product 166">
+          <div class="name">Zabawka</div>
+          <div class="price">99 PLN</div>
+        </div> 
+
+        <div class="product" data-product-id="167" data-category="Akcesoria" data-color="Rozowy">
+          <div class="product-favorite" data-product-id="167">&#10084;</div>
+          <img src="Product 167.jpeg" alt="Product 167">
+          <div class="name">Rękawiczki</div>
+          <div class="price">18 PLN</div>
+        </div> 
+</div>
+
+ <!-- PRODUCT MODAL -->
+ <div class="product-modal" id="productModal">
+    <div class="modal-content">
+      <span class="close-modal" id="closeModal">&times;</span>
+      <div class="modal-favorite" id="modalFavorite">&#10084;</div>
+      <img class="modal-image" id="modalImage" src="" alt="Product Image">
+      <h2 class="modal-title" id="modalTitle">Product Name</h2>
+      <div class="modal-price" id="modalPrice">0 PLN</div>
+      <div class="modal-description" id="modalDescription">
+      </div>
+      <div class="modal-comments">
+          <h3 class="modal-comments-title">Comments</h3>
+          <div id="commentsContainer">
+              <!-- KOMENTARZE -->
+          </div>
+          <div class="add-comment">
+              <h4>Add comment</h4>
+              <div class="comment-input">
+                  <input type="text" id="commentAuthor" placeholder="Your name" required>
+                  <textarea id="commentText" placeholder="Your comment..." required></textarea>
+                  <button type="button" class="comment-submit" id="submitComment">Add comment</button>
+              </div>
+          </div>
+      </div>
+  </div>
+        
+  <script src="kids-clothing.js"></script>
+  
+  </body>
+  </html>

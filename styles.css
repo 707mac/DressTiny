@@ -182,6 +182,68 @@ body, html {
     box-sizing: border-box;
 }
 
+/* Registration Form Styles */
+.register-container {
+    background-color: #f5f5f5;
+    padding: 30px 20px;
+    border-radius: 15px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+    max-width: 350px;
+    width: 100%;
+    display: none; /* This is already present */
+    flex-direction: column;
+    justify-content: center;
+    box-sizing: border-box;
+    margin: 0;
+    opacity: 0;
+    transition: opacity 0.5s ease-in;
+    position: absolute; /* This is the issue */
+    border-top: 30px solid #f5f5f5;
+}
+
+.register-container h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: #333;
+    position: relative;
+    z-index: 1;
+}
+
+/* Add this new rule */
+.register-container:not(.show) {
+    display: none !important;
+    pointer-events: none;
+}
+
+.register-container.show {
+    opacity: 1;
+}
+
+.register-toggle, .login-toggle {
+    margin-top: 15px;
+    text-align: center;
+    font-size: 14px;
+    color: #666;
+}
+
+.register-toggle a, .login-toggle a {
+    color: #8b0000;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.register-toggle a:hover, .login-toggle a:hover {
+    text-decoration: underline;
+}
+
+.password-mismatch {
+    color: #8b0000;
+    font-size: 12px;
+    margin-top: 5px;
+    display: none;
+}
+
 /* Inputy */
 input {
     width: 100%;
@@ -377,6 +439,17 @@ textarea {
     font-size: 14px;
     font-weight: 700;
     color: #8b0000;
+}
+.old-price {
+    text-decoration: line-through;
+    color: #8b0000;
+    opacity: 0.7;
+    margin-right: 8px;
+}
+
+.sale-price {
+    color: #4a4a4a;
+    font-weight: bold;
 }
 
 /* Scrollbar styling */
@@ -598,11 +671,18 @@ textarea {
     color: #333;
 }
 
-.modal-price {
-    font-size: 22px;
+.modal-price .old-price {
+    text-decoration: line-through;
+    color: #8b0000;
+    opacity: 0.7;
+    margin-right: 8px;
+    font-size: 18px;
+}
+
+.modal-price .sale-price {
     color: #4a4a4a;
+    font-size: 22px;
     font-weight: bold;
-    margin-bottom: 15px;
 }
 
 .modal-description {
@@ -783,25 +863,6 @@ textarea {
     transform: scale(1.1);
 }
 
-/* Price styling */
-.price-container {
-    display: flex;
-    flex-direction: column;
-    margin-top: 5px;
-}
-
-.current-price {
-    color: #8b0000;
-    font-weight: bold;
-    font-size: 14px;
-}
-
-.old-price {
-    text-decoration: line-through;
-    color: #8b0000;
-    font-size: 11px;
-}
-
 
 .categories a {
     text-decoration: none; /* usuwa podkreślenie */
@@ -842,6 +903,3 @@ textarea {
     padding: 0 10px;
     box-sizing: border-box;
 }
-
-
-

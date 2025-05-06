@@ -1,3 +1,103 @@
+// User accounts system
+let users = JSON.parse(localStorage.getItem('users')) || [];
+const loginContainer = document.getElementById('loginContainer');
+const registerContainer = document.getElementById('registerContainer');
+const showRegister = document.getElementById('showRegister');
+const showLogin = document.getElementById('showLogin');
+
+// Toggle between login and register forms
+showRegister.addEventListener('click', function(e) {
+    e.preventDefault();
+    loginContainer.classList.remove('show');
+    registerContainer.style.display = 'flex';
+    setTimeout(() => {
+        registerContainer.classList.add('show');
+    }, 10);
+});
+
+showLogin.addEventListener('click', function(e) {
+    e.preventDefault();
+    registerContainer.classList.remove('show');
+    registerContainer.style.display = 'none'; // Add this line
+    loginContainer.style.display = 'flex';
+    setTimeout(() => {
+        loginContainer.classList.add('show');
+    }, 10);
+});
+
+// Registration form handler
+document.getElementById('registerForm').onsubmit = function(event) {
+    event.preventDefault();
+    
+    const username = document.getElementById('registerUsername').value;
+    const email = document.getElementById('registerEmail').value;
+    const password = document.getElementById('registerPassword').value;
+    const confirmPassword = document.getElementById('registerConfirmPassword').value;
+    
+    // Clear any previous error messages
+    const existingError = document.querySelector('.register-error');
+    if (existingError) {
+        existingError.remove();
+    }
+    
+    const passwordMismatch = document.querySelector('.password-mismatch');
+    passwordMismatch.style.display = 'none';
+    
+    // Validate inputs
+    if (password !== confirmPassword) {
+        passwordMismatch.style.display = 'block';
+        return;
+    }
+    
+    // Check if username already exists
+    if (users.some(user => user.username === username)) {
+        const errorMessage = document.createElement('div');
+        errorMessage.className = 'error-message register-error';
+        errorMessage.textContent = 'Username already exists';
+        registerForm.parentNode.insertBefore(errorMessage, registerForm.nextSibling);
+        return;
+    }
+    
+    // Check if email already exists
+    if (users.some(user => user.email === email)) {
+        const errorMessage = document.createElement('div');
+        errorMessage.className = 'error-message register-error';
+        errorMessage.textContent = 'Email already registered';
+        registerForm.parentNode.insertBefore(errorMessage, registerForm.nextSibling);
+        return;
+    }
+    
+    // Create new user
+    const newUser = {
+        username: username,
+        email: email,
+        password: password,
+        favorites: []
+    };
+    
+    users.push(newUser);
+    localStorage.setItem('users', JSON.stringify(users));
+    
+    // Show success message and switch to login
+    const successMessage = document.createElement('div');
+    successMessage.className = 'error-message';
+    successMessage.style.color = 'green';
+    successMessage.textContent = 'Registration successful! Please login.';
+    registerForm.parentNode.insertBefore(successMessage, registerForm.nextSibling);
+    
+    // Clear form
+    registerForm.reset();
+    
+    // Switch to login after 2 seconds
+    setTimeout(() => {
+        registerContainer.classList.remove('show');
+        loginContainer.style.display = 'flex';
+        setTimeout(() => {
+            loginContainer.classList.add('show');
+        }, 10);
+    }, 2000);
+};
+
 // Delay to show main page after loading splash screen
 setTimeout(function() {
     const splashScreen = document.getElementById('splashScreen');
@@ -17,10 +117,24 @@ document.getElementById('loginForm').onsubmit = function(event) {
     const username = document.getElementById('username').value;
     const password = document.getElementById('password').value;
     
-    // Check credentials
-    if (username === 'student' && password === 'WSPA') {
+    // Check credentials against registered users
+    const user = users.find(u => u.username === username && u.password === password);
+    
+    if (user || (username === 'student' && password === 'WSPA')) {
         const loginContainer = document.getElementById('loginContainer');
         loginContainer.classList.remove('show');
+        
+        // Store current user in localStorage
+        if (user) {
+            localStorage.setItem('currentUser', JSON.stringify({
+                username: user.username,
+                email: user.email
+            }));
+            
+            // Load user's favorites
+            favoriteProducts = user.favorites || [];
+            localStorage.setItem('favorites', JSON.stringify(favoriteProducts));
+        }
         
         setTimeout(function() {
             loginContainer.style.display = 'none';
@@ -30,7 +144,7 @@ document.getElementById('loginForm').onsubmit = function(event) {
         // Show error message
         const errorMessage = document.createElement('div');
         errorMessage.className = 'error-message';
-        errorMessage.textContent = 'Nie ma takiego użytkownika';
+        errorMessage.textContent = 'Invalid username or password';
         
         // Remove any existing error message
         const existingError = document.querySelector('.error-message');
@@ -558,7 +672,8 @@ function showProductDetails(productId) {
 }
 
 function toggleFavorite(productId, element) {
-    // Allow adding all products (1-23) to favorites
+    const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    
     const index = favoriteProducts.indexOf(productId);
     
     if (index === -1) {
@@ -582,6 +697,15 @@ function toggleFavorite(productId, element) {
     }
     
     localStorage.setItem('favorites', JSON.stringify(favoriteProducts));
+    
+    // Update favorites in user account if logged in
+    if (currentUser) {
+        const userIndex = users.findIndex(u => u.username === currentUser.username);
+        if (userIndex !== -1) {
+            users[userIndex].favorites = favoriteProducts;
+            localStorage.setItem('users', JSON.stringify(users));
+        }
+    }
 }
 
 function isFavorite(productId) {
@@ -747,34 +871,6 @@ function updateProductGrid(container, filteredProducts) {
     attachProductEvents();
 }
 
-// Sprawdzanie statusu logowania
-function checkLoginStatus() {
-    const isLoggedIn = localStorage.getItem('loggedIn') === 'true';
-
-    if (isLoggedIn) {
-        document.getElementById('mainContainer').style.display = 'block';
-        document.getElementById('loginContainer').style.display = 'none';
-        document.querySelector('.login-wrapper').style.display = 'none';
-        document.getElementById('splashScreen').style.display = 'none';
-    } else {
-        document.getElementById('mainContainer').style.display = 'none';
-        document.getElementById('loginContainer').style.display = 'block';
-        document.querySelector('.login-wrapper').style.display = 'flex';
-        document.getElementById('splashScreen').style.display = 'block';
-    }
-}
-
-// Obsługa formularza logowania
-document.getElementById('loginForm').addEventListener('submit', function(event) {
-    event.preventDefault();
-    localStorage.setItem('loggedIn', 'true');  // Ustawienie statusu logowania w localStorage
-    checkLoginStatus();  // Sprawdzamy, czy użytkownik jest zalogowany
-});
-
-// Sprawdzanie statusu logowania przy ładowaniu strony
-window.onload = function() {
-    checkLoginStatus();
-};
 // Hide suggestions when clicking outside
 document.addEventListener('click', (e) => {
     if (e.target !== searchBar) {

@@ -8,27 +8,52 @@
 </head>
 <body>
     <!-- SPLASH SCREEN -->
-<div class="splash-screen" id="splashScreen">
-    <h1>Witaj w aplikacji <span class="logo-text">DressTiny</span> !</h1>
-</div>
-
-<!-- LOGIN SCREEN -->
-<div class="login-wrapper">
-    <div class="login-container" id="loginContainer">
-        <div class="login-bow">
-            <div class="bow-loop left"></div>
-            <div class="bow-loop right"></div>
-            <div class="bow-center"></div>
-            <div class="bow-ribbon"></div>
-        </div>
-        <h2>Logowanie</h2>
-        <form id="loginForm">
-            <input type="text" id="username" placeholder="Username" required>
-            <input type="password" id="password" placeholder="Password" required>
-            <button type="submit">Zaloguj się</button>
-        </form>
+    <div class="splash-screen" id="splashScreen">
+        <h1>Witaj w aplikacji <span class="logo-text">DressTiny</span> !</h1>
     </div>
-</div>
+
+    <!-- LOGIN SCREEN -->
+    <div class="login-wrapper">
+        <div class="login-container" id="loginContainer">
+            <div class="login-bow">
+                <div class="bow-loop left"></div>
+                <div class="bow-loop right"></div>
+                <div class="bow-center"></div>
+                <div class="bow-ribbon"></div>
+            </div>
+            <h2>Logowanie</h2>
+            <form id="loginForm">
+                <input type="text" id="username" placeholder="Username" required>
+                <input type="password" id="password" placeholder="Password" required>
+                <button type="submit">Zaloguj się</button>
+            </form>
+            <div class="register-toggle">
+                Don't have an account? <a href="#" id="showRegister">Register</a>
+            </div>
+        </div>
+
+        <!-- REGISTER SCREEN -->
+        <div class="register-container" id="registerContainer">
+            <div class="login-bow">
+                <div class="bow-loop left"></div>
+                <div class="bow-loop right"></div>
+                <div class="bow-center"></div>
+                <div class="bow-ribbon"></div>
+            </div>
+            <h2>Register</h2>
+            <form id="registerForm">
+                <input type="text" id="registerUsername" placeholder="Username" required>
+                <input type="email" id="registerEmail" placeholder="Email" required>
+                <input type="password" id="registerPassword" placeholder="Password" required>
+                <input type="password" id="registerConfirmPassword" placeholder="Confirm Password" required>
+                <div class="password-mismatch">Passwords do not match</div>
+                <button type="submit">Create Account</button>
+            </form>
+            <div class="login-toggle">
+                Already have an account? <a href="#" id="showLogin">Login</a>
+            </div>
+        </div>
+    </div>
 
     <!-- MAIN SCREEN -->
     <div class="main-container" id="mainContainer">
@@ -60,8 +85,8 @@
                 <a href="kids-clothing.html" class="category" id="kidsClothingTab">Dziecięca Odzież</a>
             </div>
 
-             <!-- Sale section -->
-             <div class="sale-section">
+            <!-- Sale section -->
+            <div class="sale-section">
                 <h2>Sale</h2>
                 <div class="sale-products-container">
                     <div class="sale-products">

@@ -44,10 +44,6 @@ const productDescriptions = {
   149: "Zestaw długich skarpetek 3 pary.",
   150: "Skarpetki dziecięce w jednorozce.",
   151: "Zestaw krótkich skarpetek dziecięcych.",
-  
-
-  
- 
 };
 
 // Ustaw kolor dużego serduszka
@@ -173,11 +169,23 @@ modalFavorite.addEventListener("click", () => {
 
 // Favorites widok
 favoritesIcon.addEventListener("click", () => {
-  normalView.style.display = "none";
-  favoritesView.style.display = "block";
-  renderProducts(favoritesList, favorites);
-  updateFavoritesIcons();
+  const isInFavorites = favoritesView.style.display === "block";
+
+  if (isInFavorites) {
+    // Już jesteś w ulubionych – wróć do normalnego widoku
+    favoritesView.style.display = "none";
+    normalView.style.display = "block";
+    searchBar.value = "";
+    document.querySelectorAll(".product").forEach(p => p.style.display = "block");
+  } else {
+    // Przejdź do ulubionych
+    normalView.style.display = "none";
+    favoritesView.style.display = "block";
+    renderProducts(favoritesList, favorites);
+    updateFavoritesIcons();
+  }
 });
+
 
 // Powrót przez logo
 logo.addEventListener("click", () => {
@@ -381,6 +389,19 @@ function toggleFilterDropdown() {
   filterMenu.style.display = filterMenu.style.display === "block" ? "none" : "block";
   document.getElementById("sort-dropdown").style.display = "none"; // Zamknij drugi dropdown
 }
+
+
+
+document.addEventListener("DOMContentLoaded", function () {
+  const logo = document.querySelector(".logo-container .app-logo");
+
+  if (logo) {
+    logo.addEventListener("click", function () {
+      window.location.href = "index.html";
+    });
+  }
+});
+
 
 // Aktualizacja ikon ulubionych
 updateFavoritesIcons();

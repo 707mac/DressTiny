@@ -871,8 +871,7 @@ function updateProductGrid(container, filteredProducts) {
     attachProductEvents();
 }
 
-
- // Hide suggestions when clicking outside
+// Hide suggestions when clicking outside
 document.addEventListener('click', (e) => {
     if (e.target !== searchBar) {
         searchSuggestions.style.display = 'none';

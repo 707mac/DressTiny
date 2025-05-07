@@ -871,35 +871,6 @@ function updateProductGrid(container, filteredProducts) {
     attachProductEvents();
 }
 
-// Sprawdzanie statusu logowania
-function checkLoginStatus() {
-    const isLoggedIn = localStorage.getItem('loggedIn') === 'true';
-
-    if (isLoggedIn) {
-        document.getElementById('mainContainer').style.display = 'block';
-        document.getElementById('loginContainer').style.display = 'none';
-        document.querySelector('.login-wrapper').style.display = 'none';
-        document.getElementById('splashScreen').style.display = 'none';
-    } else {
-        document.getElementById('mainContainer').style.display = 'none';
-        document.getElementById('loginContainer').style.display = 'block';
-        document.querySelector('.login-wrapper').style.display = 'flex';
-        document.getElementById('splashScreen').style.display = 'block';
-    }
-}
-
-// Obsługa formularza logowania
-document.getElementById('loginForm').addEventListener('submit', function(event) {
-    event.preventDefault();
-    localStorage.setItem('loggedIn', 'true');  // Ustawienie statusu logowania w localStorage
-    checkLoginStatus();  // Sprawdzamy, czy użytkownik jest zalogowany
-});
-
-// Sprawdzanie statusu logowania przy ładowaniu strony
-window.onload = function() {
-    checkLoginStatus();
-};
-
 
  // Hide suggestions when clicking outside
 document.addEventListener('click', (e) => {
